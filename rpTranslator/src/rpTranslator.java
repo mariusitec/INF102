@@ -9,7 +9,7 @@ public class rpTranslator {
 
         StdOut.println("Enter expression in reverse polish form: ");
         //String input = StdIn.readLine();
-        String input = "1 2 + 3 4 5 + + *";
+        String input = "1 2 + 3 4 5 + + * 6 7 / 8 9 + * -";
 
         String[] elements = input.split(" ");
 
@@ -17,7 +17,7 @@ public class rpTranslator {
 
         for (int i = 0; i < elements.length; i++) {
 
-            if (elements[i].equals("*") || elements[i].equals("+")) {
+            if (elements[i].equals("*") || elements[i].equals("+")|| elements[i].equals("-")|| elements[i].equals("/")) {
                 String formatted = ")" + everything.pop() + elements[i] + everything.pop() + "(";
                 everything.push(formatted);
             } else{
