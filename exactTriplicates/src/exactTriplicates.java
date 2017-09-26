@@ -4,18 +4,21 @@ import java.util.Set;
 
 public class exactTriplicates {
 
+    //FOR PERFORMANCE TESTING
+    private static final long MEGABYTE = 1024L * 1024L;
+
+    public static long bytesToMegabytes(long bytes) {
+        return bytes / MEGABYTE;
+    }
+
     public static void main(String[] args) {
 
+        long startTime = System.currentTimeMillis();
 
-        String[] tabell1 = {"martin", "marius", "petter", "helge"};
+        String[] tabell1 = {"martin", "othilie", "petter", "helge"};
         String[] tabell2 = {"espen", "martin", "martin", "stian"};
-        String[] tabell3 = {"marius", "othilie", "oda", "petter"};
-        String[] tabell4 = {"iver", "lars", "marius", "petter"};
-
-        BottomUpMergeSort.sort(tabell1);
-        BottomUpMergeSort.sort(tabell2);
-        BottomUpMergeSort.sort(tabell3);
-        BottomUpMergeSort.sort(tabell4);
+        String[] tabell3 = {"othilie", "marius", "oda", "petter"};
+        String[] tabell4 = {"iver", "lars", "othilie", "petter"};
 
         //remove duplicates
         Set<String> set1 = new HashSet<>();
@@ -44,9 +47,6 @@ public class exactTriplicates {
         System.arraycopy(done3, 0 , merged, done1.length*2 - 1, done3.length);
         System.arraycopy(done4, 0 , merged, done1.length*3 - 1, done4.length);
 
-      //  BottomUpMergeSort.sort(merged);
-       // StdOut.print(Arrays.toString(merged));
-
         UBST<String,Integer> st = new UBST<>();
 
         for (int i = 0; i < merged.length; i++) {
@@ -57,9 +57,23 @@ public class exactTriplicates {
         }
         for (int i = 0; i < merged.length; i++) {
             if (st.get(merged[i]).equals(Integer.parseInt("3"))) {
-                StdOut.print("´" + merged[i] + "´" + " is the lexicographically first occurance of a name that appears in three lists");
+                StdOut.println(merged[i] + " is the lexicographically first occurance of a name that appears in three lists");
                 break;
             }
         }
+
+        //FOR PERFORMANCE TESTING
+        long stopTime = System.currentTimeMillis();
+        long elapsedTime = stopTime-startTime;
+        StdOut.println("Runtime: " + elapsedTime + "ms");
+
+        Runtime runtime = Runtime.getRuntime();
+        // Run the garbage collector
+        runtime.gc();
+        // Calculate the used memory
+        long memory = runtime.totalMemory() - runtime.freeMemory();
+        System.out.println("Used memory is bytes: " + memory);
+        System.out.println("Used memory is megabytes: "
+                + bytesToMegabytes(memory));
     }
 }
