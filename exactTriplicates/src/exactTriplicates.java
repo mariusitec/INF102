@@ -1,6 +1,8 @@
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.BinarySearchST;
 import java.util.HashSet;
 import java.util.Set;
+
 
 public class exactTriplicates {
 
@@ -46,8 +48,8 @@ public class exactTriplicates {
         System.arraycopy(done2, 0 , merged, done1.length, done2.length);
         System.arraycopy(done3, 0 , merged, done1.length*2 - 1, done3.length);
         System.arraycopy(done4, 0 , merged, done1.length*3 - 1, done4.length);
-
-        UBST<String,Integer> st = new UBST<>();
+        
+        BinarySearchST<String, Integer> st = new BinarySearchST<>();
 
         for (int i = 0; i < merged.length; i++) {
             String key = merged[i];
