@@ -46,19 +46,6 @@ private Node put(Key k, Value v, Node r) {
   r.N = size(r.left) + size(r.right) + 1; // recompute when unwinding recursion
   return r;
 }
-/*
-public static void main(String[] args)  { 
-  UBST<String,Integer> st = new UBST<>();
-  In infile = new In(args[0]);
-  while (!infile.isEmpty()) {
-    String key = infile.readString(); 
-    Integer i = st.get(key);
-    if (i != null) st.put(key,i+1);
-    else st.put(key, 1);
-  }
-  st.show(); assert st.keylevels();
-}//End of main
-*/
 private boolean keylevels(){// used with assert for simple traces
   Queue<Node> q = new Queue<>();
   q.enqueue(root); // precondition: root != null
