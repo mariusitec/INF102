@@ -55,18 +55,18 @@ public class profitSorting {
 
     public static void binarySearch(int[] all, int[] randoms) {
 
-        BinarySearchST<Integer, Integer> st = new BinarySearchST();
+        BST<Integer, Integer> st = new BST<>();
         //sorting
         for (int i = 0; i < all.length; i++) {
-            st.put(all[i], i);
+            Integer key = all[i];
+            st.put(key, i);
 
         }
-        StdOut.println("Hei");
+
         //searching
         for (int i = 0; i < randoms.length;i++) {
-            if (st.get(randoms[i]) != null)
+            if (st.contains(randoms[i]))
                 StdOut.println("Hit at position " + st.get(randoms[i]));
-
         }
 
     }
