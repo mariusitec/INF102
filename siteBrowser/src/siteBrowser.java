@@ -1,3 +1,12 @@
+/**
+ * Task 2, mandatory assignment 1
+ * INF102
+ *
+ * @author Marius Kleppe Larnoy
+ * @author Martin Skivenesvaag Johannessen
+ *
+ */
+
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -10,19 +19,6 @@ public class siteBrowser {
 
         Stack past = new Stack();
         Stack future = new Stack();
-        /*String input = "11\n" +
-                "Facebook\n" +
-                "Twitter\n" +
-                "Google\n" +
-                "∗back∗\n" +
-                "∗back∗\n" +
-                "∗forward∗\n" +
-                "YouTube\n" +
-                "∗forward∗\n" +
-                "LinkedIn\n" +
-                "∗back∗\n" +
-                "∗back∗";
-        Scanner scanner = new Scanner(input);*/
 
         StdOut.println("Enter number of commands you will use and press 'enter', then write commands separated by enter: ");
         Scanner scanner = new Scanner(StdIn.readLine());
