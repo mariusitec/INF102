@@ -25,10 +25,12 @@ public class exactTriplicates {
         long startTime = System.currentTimeMillis();
 
         //reades from four textfiles in the same directory as the .java-file
-        String file1 = "50names1.txt";
-        String file2 = "50names2.txt";
-        String file3 = "50names3.txt";
-        String file4 = "50names4.txt";
+        
+        // CHANGE THESE TO THE NAMES OF THE FILES WITH THE LISTS YOU WANT TO USE
+        String file1 = "names1.txt";
+        String file2 = "names2.txt";
+        String file3 = "names3.txt";
+        String file4 = "names4.txt";
 
         In in1 = new In(file1);
         In in2 = new In(file2);
@@ -65,22 +67,26 @@ public class exactTriplicates {
         //creates an array
         String[] merged = new String[done1.length + done2.length + done3.length + done4.length];
 
-        //
+        //concatenates the four lists of names into one list
         System.arraycopy(done1, 0 , merged, 0, done1.length);
         System.arraycopy(done2, 0 , merged, done1.length, done2.length);
         System.arraycopy(done3, 0 , merged, done1.length*2, done3.length);
         System.arraycopy(done4, 0 , merged, done1.length*3, done4.length);
 
+        //new binary search three from the algs4 library
         BST<String, Integer> st = new BST<>();
 
+        //for loop that counts duplicates from the concatenated list merged, and put() it as the ST value.
+        //the number of duplicates of a name equals the number of lists that contain the name
         for (int i = 0; i < merged.length; i++) {
             String key = merged[i];
             Integer j = st.get(key);
             if (j != null) st.put(key, j + 1);
             else st.put(key, 1);
         }
+        //for loop that finds keys(names) with the value 3. Which means that there was exactly three lists that contained the name.
         for (int i = 0; i < merged.length; i++) {
-            if (st.get(merged[i]).equals(Integer.parseInt("3"))) {
+            if (st.get(merged[i]).equals(3))) {
                 StdOut.println(merged[i] + " is the lexicographically first occurance of a name that appears in three lists");
                 break;
             }
