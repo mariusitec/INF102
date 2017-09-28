@@ -5,7 +5,7 @@ public class profitSorting {
 
     public static void main(String[] args) {
 
-       int[] intArray = new int[10000];
+        int[] intArray = new int[10000];
 
         Random rand = new Random();
 
@@ -23,27 +23,37 @@ public class profitSorting {
         }
 
         //Linear search
-        Stopwatch linearWatch = new Stopwatch();
-
         StdOut.println("Linear Search: ");
-        linearSearch(intArray, randoms);
+        double averageLinearTime = 0;
+        for (int i = 0; i<1000; i++) {
+            Stopwatch linearWatch = new Stopwatch();
+            linearSearch(intArray, randoms);
+            double linearTime = linearWatch.elapsedTime();
+            averageLinearTime += linearTime;
+            //StdOut.println("(Linear)Time elapsed: " + linearTime + "s");
+        }
+        averageLinearTime = averageLinearTime/1000;
+        StdOut.println("Average of 1000 runs (Linear)Time elapsed: " + averageLinearTime + "s");
 
-        double linearTime = linearWatch.elapsedTime();
-        StdOut.println("(Linear)Time elapsed: " + linearTime + "s");
 
         //Binary search
-        Stopwatch binaryWatch = new Stopwatch();
-
         StdOut.println("Binary Search: ");
-        binarySearch(intArray, randoms);
+        double averageBinaryTime = 0;
+        for (int i = 0; i<1000; i++) {
+            Stopwatch binaryWatch = new Stopwatch();
+            binarySearch(intArray, randoms);
+            double binaryTime = binaryWatch.elapsedTime();
+            averageBinaryTime += binaryTime;
 
-        double binaryTime = binaryWatch.elapsedTime();
-        StdOut.println("(Binary)Time elapsed: " + binaryTime + "s");
+            //StdOut.println("(Binary)Time elapsed: " + binaryTime + "s");
+        }
+        averageBinaryTime= averageBinaryTime/1000;
+        StdOut.println("Average of 1000 runs (Binary)Time elapsed: " + averageBinaryTime + "s");
 
     }
 
     public static void linearSearch(int[] all, int[] randoms) {
-        StdOut.println("Found:");
+        //StdOut.println("Found:");
         for(int i = 0; i < randoms.length;i++) {
             for (int j = 0; j < all.length; j++) {
                 if (all[j] == randoms[i])
