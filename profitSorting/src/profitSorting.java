@@ -1,3 +1,12 @@
+/**
+ * Task 4, mandatory assignment 1
+ * INF102
+ *
+ * @author Marius Kleppe Larnøy
+ * @author Martin Skivenesvåg Johannessen
+ *
+ */
+
 import edu.princeton.cs.algs4.*;
 import java.util.Random;
 
@@ -5,10 +14,12 @@ public class profitSorting {
 
     public static void main(String[] args) {
 
-        int[] intArray = new int[10000];
+        //creates array for ints to be stored
+        int[] intArray = new int[1000000];
 
         Random rand = new Random();
 
+        //generates random integers to fill the intArray
         for (int i = 0; i < intArray.length; i++) {
             intArray[i] = rand.nextInt();
         }
@@ -24,36 +35,27 @@ public class profitSorting {
 
         //Linear search
         StdOut.println("Linear Search: ");
-        double averageLinearTime = 0;
-        for (int i = 0; i<1000; i++) {
-            Stopwatch linearWatch = new Stopwatch();
-            linearSearch(intArray, randoms);
-            double linearTime = linearWatch.elapsedTime();
-            averageLinearTime += linearTime;
-            //StdOut.println("(Linear)Time elapsed: " + linearTime + "s");
-        }
-        averageLinearTime = averageLinearTime/1000;
-        StdOut.println("Average of 1000 runs (Linear)Time elapsed: " + averageLinearTime + "s");
+
+        Stopwatch linearWatch = new Stopwatch();
+        linearSearch(intArray, randoms);
+        double linearTime = linearWatch.elapsedTime();
+
+        StdOut.println("(Linear)Time elapsed: " + linearTime + "s");
 
 
         //Binary search
         StdOut.println("Binary Search: ");
-        double averageBinaryTime = 0;
-        for (int i = 0; i<1000; i++) {
-            Stopwatch binaryWatch = new Stopwatch();
-            binarySearch(intArray, randoms);
-            double binaryTime = binaryWatch.elapsedTime();
-            averageBinaryTime += binaryTime;
 
-            //StdOut.println("(Binary)Time elapsed: " + binaryTime + "s");
-        }
-        averageBinaryTime= averageBinaryTime/1000;
-        StdOut.println("Average of 1000 runs (Binary)Time elapsed: " + averageBinaryTime + "s");
+        Stopwatch binaryWatch = new Stopwatch();
 
+        binarySearch(intArray, randoms);
+
+        double binaryTime = binaryWatch.elapsedTime();
+        StdOut.println("(Binary)Time elapsed: "+binaryTime +"s");
     }
 
+
     public static void linearSearch(int[] all, int[] randoms) {
-        //StdOut.println("Found:");
         for(int i = 0; i < randoms.length;i++) {
             for (int j = 0; j < all.length; j++) {
                 if (all[j] == randoms[i])
