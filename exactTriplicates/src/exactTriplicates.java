@@ -25,12 +25,13 @@ public class exactTriplicates {
         long startTime = System.currentTimeMillis();
 
         //reades from four textfiles in the same directory as the .java-file
+        StdOut.println("Enter the name of four textfiles in the same directory");
+        String[] string = StdIn.readLine().split(" ");
         
-        // CHANGE THESE TO THE NAMES OF THE FILES WITH THE LISTS YOU WANT TO USE
-        String file1 = "names1.txt";
-        String file2 = "names2.txt";
-        String file3 = "names3.txt";
-        String file4 = "names4.txt";
+        String file1 = string[0];
+        String file2 = string[1];
+        String file3 = string[2];
+        String file4 = string[3];
 
         In in1 = new In(file1);
         In in2 = new In(file2);
